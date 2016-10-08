@@ -20,7 +20,7 @@ Do zilustrowania procesu budowania liczb naturalnych Churcha użyję opisu słow
 
 - `1` - funkcja, która bierze funkcję i zwraca funkcję ￼￼od x wykonującą f na x, zapis matematyczny to `λf.λx.f(x)`.
 
-- `2` - funkcja, która bierze funkcję i zwraca funkcję ￼￼od x wykonującą f na f od x, zapis matematyczny to `λf.λx.f( f(x) )`.
+- `2` - funkcja, która bierze funkcję i zwraca funkcję ￼￼od x wykonującą f na f od x, zapis matematyczny to `λf.λx.f(f(x))`.
 
 Można zauważyć tu pewną zależność, każdy następnik to po prostu kolejne złożenie funkcji:
 - `λf.λx.x`
@@ -80,10 +80,13 @@ var church_to_int = f => f(x=>x+1)(0);
 
 
 ###### Snap:
+![alt church_zero](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/church_zero.png)
 
+![alt successor](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/successor.png)
 
+![alt int_to_church](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/int_to_church.png)
 
-
+![alt churh_to_int](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/church_to_int.png)
 
 Warto przyjrzeć się church_to_int - aby z liczby naturalnej Churcha otrzymać liczbę całkowitą należy wywołać ją z funkcją inkrementacji, co zwróci nam odpowiednią ilość złożeń dodawania jeden do argumentu i wywołać to z zerem. 
 
@@ -122,8 +125,11 @@ var churchexp = function( a, b ) {
 ```
 
 ###### Snap:
+![alt church_sum](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/church_sum.png)
 
+![alt church_mul](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/church_mul.png)
 
+![alt church_exp](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/church_exp.png)
 
 
 Możemy jeszcze pokusić się o zaimplementowanie funkcji zmieniającej liczbę naturalną Churcha na string obrazujący ilość złożeń funkcji f.
@@ -135,21 +141,26 @@ function church_to_string( f ) {
 ```
 
 ###### Snap:
-
+![alt church_to_string](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/church_to_string.png)
 
 Skoro mamy już zaimplementowany zbiór liczb naturalnych Churcha to warto pokazać, że nie musimy operować wyłącznie na liczbach. Pomyślmy o pozycji sprite’a ze Snapa jako o systemie liczb naturalnych. Pozycja startowa to nasze 0, jej następnikiem jest przesunięcie się o krok itd. Każda pozycja ma swojego następnika jako pozycję o krok dalej.
 
 Do implementacji kroku w przód możemy użyć funkcji która bierze długość kroku i porusza spritem o podaną długość, po czym ją zwraca:
 
-
+![alt move](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/move.png)
 
 Do poruszania spritem liczebnikami Churcha należy tylko lekko zmodyfikować church_to_string lub church_to_int:
 
-
+![alt church_move](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/church_move.png)
 
 Po wywołaniu:
+
+![alt using_church_move](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/church_blocks/using_church_move.png)
 
 Nasz sprite przesunie się o 100 kroków naprzód. Warto zwrócić uwagę, że do funkcji nie przekazujemy liczby, a (w uproszczeniu) funkcję złożoną 100 razy.
 
 ### Abstrakcyjność liczb naturalnych Churcha
 Zaimplementowaliśmy system liczb naturalnych Churcha i pokazaliśmy jego zastosowania, rozpoczynając od zamiany na liczbę, poprzez zamianę na string, kończąc na abstrakcyjnej zamianie na pozycję sprite’a na ekranie, udowadniając tym samym, że jest to najbardziej ogólny zbiór liczb naturalnych jaki możemy sobie wymyślić.
+
+---
+Kod źródłowy (plik XML, który można [zaimportować](http://snap.berkeley.edu/snapsource/snap.html)) dostępny jest do pobrania [tutaj](https://raw.githubusercontent.com/Solpatium/Liczebniki-Churcha/master/source/Church%20numerals.xml).
